@@ -1,13 +1,16 @@
 from pydantic import BaseModel
 from typing import Optional
-from entities.miembro import miembro
+from models.gremio import gremio
 from config.db import database
 
 
-class Member(BaseModel):
+class Gremio(BaseModel):
     id: Optional[int]
     nombre: str = None
 
+    class Config:
+        orm_mode = True
+
     def get_members(self):
-        query = miembro.select()
+        query = gremio.select()
         return database.fetch_all(query)
