@@ -1,13 +1,18 @@
+from sqlalchemy import create_engine, MetaData
 import databases
-import sqlalchemy
+from sqlalchemy.orm import sessionmaker
 
-try:
-    DATABASE_URL = 'sqlite:///db.s3db'
-    database = databases.Database(DATABASE_URL)
-    metadata = sqlalchemy.MetaData()
-    engine = sqlalchemy.create_engine(
-        DATABASE_URL, connect_args={"check_same_thread": False}
-    )
-    #metadata.create_all(engine)
-except Exception as e:
-    print(e)
+DATABASE_URL = "sqlite:///db.s3db"
+database = databases.Database(DATABASE_URL)
+
+metadata = MetaData()
+
+engine = create_engine(
+    DATABASE_URL, connect_args={"check_same_thread": False}
+)
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+metadata.create_all(engine)
+
+

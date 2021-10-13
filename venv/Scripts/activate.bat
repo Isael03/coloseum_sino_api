@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\alexisdev\Documents\dev\coliseum_planner\venv
+set VIRTUAL_ENV=C:\Users\alexisdev\Documents\dev\coliseum_planner\coliseum_planner_api\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
